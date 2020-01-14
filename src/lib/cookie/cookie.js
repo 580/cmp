@@ -12,10 +12,12 @@ import { sendPortalCommand } from '../portal';
 import pack from '../../../package.json';
 import config from '../config';
 
-const PUBLISHER_CONSENT_COOKIE_NAME = 'pubconsent';
+const CMP_GLOBAL_NAME = config.CMP_GLOBAL_NAME; // __cmp
+
+const PUBLISHER_CONSENT_COOKIE_NAME = CMP_GLOBAL_NAME === '__cmp' ? 'pubconsent' : `${CMP_GLOBAL_NAME}.pubconsent`;
 const PUBLISHER_CONSENT_COOKIE_MAX_AGE = 33696000;
 
-const VENDOR_CONSENT_COOKIE_NAME = 'euconsent';
+const VENDOR_CONSENT_COOKIE_NAME = CMP_GLOBAL_NAME === '__cmp' ? 'euconsent' : `${CMP_GLOBAL_NAME}.consent`;
 const VENDOR_CONSENT_COOKIE_MAX_AGE = 33696000;
 
 
