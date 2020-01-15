@@ -101,7 +101,7 @@ export default class Cmp {
 			const consentData = {
 				gdprApplies: config.gdprApplies,
 				hasGlobalScope: config.storeConsentGlobally,
-				consentData: this.generateConsentString()
+				uspString: this.generateConsentString()
 			};
 			callback(consentData, true);
 		},
