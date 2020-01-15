@@ -6,7 +6,7 @@ const host = (window && window.location && window.location.hostname) || '';
 const parts = host.split('.');
 const COOKIE_DOMAIN = parts.length > 1 ? `;domain=.${parts.slice(-2).join('.')}` : '';
 const COOKIE_MAX_AGE = 33696000;
-const COOKIE_NAME = window.CMP_GLOBAL_NAME === '__cmp' ? 'euconsent' : `${window.CMP_GLOBAL_NAME}.consent`;
+const COOKIE_NAME = (!window.CMP_GLOBAL_NAME || window.CMP_GLOBAL_NAME) === '__cmp' ? 'euconsent' : `${window.CMP_GLOBAL_NAME}.consent`;
 
 const readVendorListPromise = fetch('./vendorlist.json', {
 	headers: {

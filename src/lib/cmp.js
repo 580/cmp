@@ -97,6 +97,15 @@ export default class Cmp {
 			callback(consentData, true);
 		},
 
+		getUSPData: (_, callback = () => {}) => {
+			const consentData = {
+				gdprApplies: config.gdprApplies,
+				hasGlobalScope: config.storeConsentGlobally,
+				consentData: this.generateConsentString()
+			};
+			callback(consentData, true);
+		},
+
 		/**
 		 * Get the entire vendor list
 		 */
@@ -257,7 +266,7 @@ export default class Cmp {
 		// we still queue these commands until there is data available. This
 		// behavior should be removed in future versions of the CMP spec
 		else if (
-			(!this.store.persistedVendorConsentData && (command === 'getVendorConsents' || command === 'getConsentData')) ||
+			(!this.store.persistedVendorConsentData && (command === 'getVendorConsents' || command === 'getConsentData' || command === 'getUSPData')) ||
 			(!this.store.persistedPublisherConsentData && command === 'getPublisherConsents')) {
 			log.info(`Queuing command: ${command} until consent data is available`);
 			this.commandQueue.push({
