@@ -45,6 +45,8 @@ export function init(configUpdates) {
 				allowedVendorIds
 			});
 
+			// store.selectAllVendors(true);
+
 			// Pull queued command from __cmp stub
 			const {commandQueue = []} = window[CMP_GLOBAL_NAME] || {};
 
@@ -74,6 +76,13 @@ export function init(configUpdates) {
 				fetchPurposeList().then(store.updateCustomPurposeList)
 			]).then(() => {
 				cmp.cmpReady = true;
+
+				// select all
+				// if (!vendorConsentData || !vendorConsentData.selectedVendorIds) {
+				// 	store.selectAllPurposes(true);
+				// 	store.selectAllVendors(true);
+				// }
+				
 				cmp.notify('cmpReady');
 			}).catch(err => {
 				log.error('Failed to load lists. CMP not ready', err);

@@ -3,6 +3,7 @@ import style from './app.less';
 import { SECTION_PURPOSES, SECTION_VENDORS } from './popup/details/details';
 import Popup from './popup/popup';
 import Banner from './banner/banner';
+import config from '../lib/config';
 
 export default class App extends Component {
 	static defaultProps = {
@@ -42,6 +43,7 @@ export default class App extends Component {
 		// our workflow is to default all vendor consents to disallow for
 		// each purpose they inspect.
 		if (!created &&
+			config.CMP_GLOBAL_NAME === '__cmp' &&
 			!visitedPurposes[purposeItem.id]) {
 			selectAllVendors(false, purposeItem.id);
 		}
@@ -91,14 +93,14 @@ export default class App extends Component {
 		return (
 			<div class={style.gdpr}>
 				<Banner isShowing={isBannerShowing}
-						isModalShowing={isModalShowing}
-						onSave={this.onSave}
-						onShowModal={toggleModalShowing}
-						onSelectPurpose={this.onSelectPurpose}
-						onChangeDetailsPanel={this.onChangeDetailsPanel}
-						theme={theme}
-						purposes={purposes}
-						selectedPurposeDetails={selectedPurposeDetails}
+					isModalShowing={isModalShowing}
+					onSave={this.onSave}
+					onShowModal={toggleModalShowing}
+					onSelectPurpose={this.onSelectPurpose}
+					onChangeDetailsPanel={this.onChangeDetailsPanel}
+					theme={theme}
+					purposes={purposes}
+					selectedPurposeDetails={selectedPurposeDetails}
 				/>
 				<Popup store={store}
 					   onSave={this.onSave}

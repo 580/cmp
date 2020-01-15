@@ -3,7 +3,7 @@ import style from './vendors.less';
 import detailsStyle from '../details.less';
 import Switch from '../../../switch/switch';
 import Label from "../../../label/label";
-import ExternalLinkIcon from '../../../externallinkicon/externallinkicon'
+import ExternalLinkIcon from '../../../externallinkicon/externallinkicon';
 
 class VendorsLabel extends Label {
 	static defaultProps = {
